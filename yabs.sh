@@ -176,7 +176,6 @@ fi
 # Returns:
 #          Formatted memory size in KiB, MiB, GiB, or TiB
 function format_size {
-q
 	RAW=$1 # mem size in KiB
 	RESULT=$RAW
 	local DENOM=1
@@ -425,7 +424,6 @@ function format_iops {
 # Parameters:
 #          - (none)
 function disk_test {
-exit
 	if [[ "$ARCH" = "aarch64" || "$ARCH" = "arm" ]]; then
 		FIO_SIZE=512M
 	else
@@ -471,7 +469,6 @@ exit
 # Parameters:
 #          - (none)
 function dd_test {
-exit
 	I=0
 	DISK_WRITE_TEST_RES=()
 	DISK_READ_TEST_RES=()
@@ -594,6 +591,7 @@ elif [ -z "$SKIP_FIO" ]; then
 		BLOCK_SIZES=( "4k" "64k" "512k" "1m" )
 
 		# execute disk performance test
+		disk_test "${BLOCK_SIZES[@]}"
 	fi
 
 	if [[ ! -z "$DD_FALLBACK" || ${#DISK_RESULTS[@]} -eq 0 ]]; then # fio download failed or test was killed or returned an error, run dd test instead
