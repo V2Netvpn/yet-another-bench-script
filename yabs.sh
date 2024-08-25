@@ -594,7 +594,6 @@ elif [ -z "$SKIP_FIO" ]; then
 		BLOCK_SIZES=( "4k" "64k" "512k" "1m" )
 
 		# execute disk performance test
-		disk_test "${BLOCK_SIZES[@]}"
 	fi
 
 	if [[ ! -z "$DD_FALLBACK" || ${#DISK_RESULTS[@]} -eq 0 ]]; then # fio download failed or test was killed or returned an error, run dd test instead
