@@ -176,6 +176,7 @@ fi
 # Returns:
 #          Formatted memory size in KiB, MiB, GiB, or TiB
 function format_size {
+q
 	RAW=$1 # mem size in KiB
 	RESULT=$RAW
 	local DENOM=1
@@ -469,6 +470,7 @@ function disk_test {
 # Parameters:
 #          - (none)
 function dd_test {
+exit
 	I=0
 	DISK_WRITE_TEST_RES=()
 	DISK_READ_TEST_RES=()
