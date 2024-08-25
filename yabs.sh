@@ -425,6 +425,7 @@ function format_iops {
 # Parameters:
 #          - (none)
 function disk_test {
+exit
 	if [[ "$ARCH" = "aarch64" || "$ARCH" = "arm" ]]; then
 		FIO_SIZE=512M
 	else
